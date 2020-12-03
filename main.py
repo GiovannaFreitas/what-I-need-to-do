@@ -39,7 +39,7 @@ async def get_todo(id: int):
     try:
         return all_todo[id]
 
-    except NameError:
+    except IndexError:
         raise HTTPException(status_code=404, detail="To do not found")
 
 
@@ -50,7 +50,7 @@ async def update_todo(id: int, todo: Todo):
         all_todo[id] = todo
         return all_todo[id]
 
-    except NameError:
+    except IndexError:
         raise HTTPException(status_code=404, detail="To do not found")
 
 
@@ -62,5 +62,5 @@ async def delete_todo(id: int):
         all_todo.pop(id)
         return item
 
-    except NameError:
+    except IndexError:
         raise HTTPException(status_code=404, detail="To do not found")
